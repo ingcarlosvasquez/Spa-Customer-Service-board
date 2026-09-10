@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SDW Calm | Spa Service Board</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Calm spa home"><span class="brand-mark">C</span><span>calm</span></a>
+        <div class="topbar-actions">
+          <span class="refresh-note" id="refreshNote">Updated just now</span>
+          <button class="icon-button" id="refreshButton" aria-label="Refresh customer list" title="Refresh now">↻</button>
+          <button class="avatar" aria-label="Account menu">JM</button>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div>
+          <p class="eyebrow"><span></span> Live service board</p>
+          <h1>Today’s <em>spa</em> flow.</h1>
+          <p class="intro">Una vista en tiempo real de los huéspedes cuyo servicio comienza, está en curso o termina dentro de las próximas dos horas.</p>
+        </div>
+      </section>
+
+      <section class="stats" aria-label="Service summary">
+        <div class="stat-card"><span>En Servicios</span><strong id="inServiceCount">0</strong><small>with a therapist now</small></div>
+        <div class="stat-card"><span>Futuros</span><strong id="upcomingCount">0</strong><small>in the next 2 hours</small></div>
+        <div class="stat-card"><span>Finalizando pronto</span><strong id="endingSoonCount">0</strong><small>within 30 minutes</small></div>
+        <div class="stat-card source-card"><span>Atendiendo</span><strong id="timeWindow">—</strong><small>local spa time</small></div>
+      </section>
+
+      <section class="service-panel" aria-labelledby="customerHeading">
+        <div class="panel-heading">
+          <div><h2 id="customerHeading">Customers on the floor</h2><p id="recordMessage">Loading services…</p></div>
+          <div class="legend"><span><i class="dot active"></i>In service</span><span><i class="dot upcoming"></i>Upcoming</span></div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Customer</th><th>Service</th><th>Assignee</th><th>Location</th><th>Schedule</th><th>Time remaining</th></tr></thead>
+            <tbody id="customerRows"></tbody>
+          </table>
+        </div>
+        <div class="empty-state" id="emptyState" hidden><div>✦</div><h3>No customers in this window</h3><p>There are no current or upcoming services in the next two hours.</p></div>
+      </section>
+
+      <footer><span class="connection-dot" id="connectionDot"></span><span id="connectionText">Demo data · Google Sheet connection ready</span><span class="footer-poll">Auto-refreshes every 5 minutes</span></footer>
+    </main>
+
+    <script src="app.js?v=20260910"></script>
+  </body>
+</html>
