@@ -53,7 +53,11 @@ function relativeMinutes(mins) { if (mins <= 0) return 'Complete'; if (mins < 60
 function render() {
   const now = new Date(); 
   const windowEnd = new Date(now.getTime() + 120 * 60000);
-  const visible = services.filter(s => date(s.endTime) > now && date(s.startTime) <= windowEnd).sort((a,b) => date(a.startTime) - date(b.startTime));
+  const selectedLocation = (localStorage.getItem('setLocationArea') || '').trim().toLowerCase(); // setLocationArea is set in the browser console manually.
+  const visible = services.filter(s => {
+    const serviceLocation = (s.location || '').trim().toLowerCase();
+    return selectedLocation && serviceLocation === selectedLocation && date(s.endTime) > now && date(s.startTime) <= windowEnd;
+  }).sort((a,b) => date(a.startTime) - date(b.startTime));
   const active = visible.filter(s => date(s.startTime) <= now && date(s.endTime) > now);
   const upcoming = visible.filter(s => date(s.startTime) > now);
   $('#inServiceCount').textContent = active.length; $('#upcomingCount').textContent = upcoming.length; $('#endingSoonCount').textContent = active.filter(s => (date(s.endTime)-now)/60000 <= 30).length;
