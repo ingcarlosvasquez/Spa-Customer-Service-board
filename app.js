@@ -4,7 +4,7 @@
   Nombre, TipoServicio, Asignacion, Location, StartTime, EndTime
 */
 const GOOGLE_SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTQKfQ6fuLCfd9kY-9badyFMtPhasVApdDJDadpZblDTxcE9Y_LosPKZfJNRZ2_cHAy6u3HYjdyrA9H/pub?output=csv';
-const REFRESH_INTERVAL = 5 * 60 * 1000;
+const REFRESH_INTERVAL = 1 * 60 * 1000;
 let services = [];
 
 const $ = (selector) => document.querySelector(selector);
