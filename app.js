@@ -56,7 +56,7 @@ function render() {
   const selectedLocation = (localStorage.getItem('setLocationArea') || '').trim().toLowerCase(); // setLocationArea is set in the browser console manually.
   const visible = services.filter(s => {
     const serviceLocation = (s.location || '').trim().toLowerCase();
-    return selectedLocation && serviceLocation === selectedLocation && date(s.endTime) > now && date(s.startTime) <= windowEnd;
+    return (selectedLocation === 'all' || (selectedLocation && serviceLocation === selectedLocation)) && date(s.endTime) > now && date(s.startTime) <= windowEnd;
   }).sort((a,b) => date(a.startTime) - date(b.startTime));
   const active = visible.filter(s => date(s.startTime) <= now && date(s.endTime) > now);
   const upcoming = visible.filter(s => date(s.startTime) > now);
